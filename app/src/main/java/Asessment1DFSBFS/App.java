@@ -3,6 +3,9 @@
  */
 package Asessment1DFSBFS;
 
+import java.lang.annotation.Target;
+import java.util.ArrayList;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
@@ -10,5 +13,21 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        
+        Node start = new Node("Start",2);
+        
+        start.createChildren(3, 2, 11, start); //recursive function to generate a tree (depth, width/number of children, number of the target node, startnode)
+
+        DFS dfs = new DFS();
+        System.out.println(dfs.getTarget(start).getData() + "DFS");
+
+        BFS bfs = new BFS();
+        
+        ArrayList<Node> begin  = new ArrayList<>();
+        begin.add(start);
+
+        Node node = bfs.getTarget(begin);
+        System.out.println(node.getData() + "BFS");
+
     }
 }
